@@ -1,0 +1,88 @@
+Q.1 Build a Server Using Http Module NodejS with api endpoints for Getting Products Data
+let http = require('http')
+// const { json } = require('node:stream/consumers')
+let app=http.createServer((req,res)=>
+{
+    if(req.url==='/')
+    {
+        res.end("Welcome to Men & Women Dummy Data")
+    }
+    else if(req.url==='/men')
+    {
+            res.end(JSON.stringify({id:1,name:"men's shirt"},{id:2,name:"men's shirt"}))    
+    }
+    else if(req.url==='/women')
+    {
+        res.end(JSON.stringify({id:1,name:"Women shirt"},{id:2,name:"women shirt"}))
+    }
+    else(req.url==='/other')
+    {
+        res.end("Page Not Found")
+    }
+})
+
+app.listen(5000,()=> {
+    console.log("Server is Running");
+})
+
+
+
+Q.2 Create a Backend For Counter Web App with Api Endpoint for Managing Counter Using Expresl
+const express = require('express');
+const app = express();
+let counter = 0;
+app.get('/',(req,res)=>
+{
+    res.send({Counter:counter})
+})
+
+app.get('/increment',(req,res)=>
+{
+    counter++;
+    res.send({Counter:counter})
+})
+ 
+app.get('/decrement',(req,res)=>
+{
+    counter--;
+    res.send({Counter:counter})
+})
+app.listen(5000,()=> {
+     console.log("Server is Running");
+})
+
+
+Q.3_Create a Basic Server with Different Routes using Express
+const express = require('express');
+const app = express();
+app.get('/',(req,res)=>
+{
+    res.send({msg:`I am homepage`})
+})
+
+app.get('/about',(req,res)=>
+{
+    res.json({msg:`I am about page`})
+})
+ 
+app.get('/contact',(req,res)=>
+{
+    res.json({emai:`suppor#@pwskills.com`})
+})
+app.listen(5000,()=> {
+     console.log("Server is Running");
+})
+
+
+Q.4 Build a Server that Generates Random Number Using Express
+const express = require('express');
+const app = express();
+
+app.get('/random',(req,res)=>
+{
+    res.json({random:Math.floor(Math.random()*100)})
+})
+
+app.listen(5000,()=> {
+     console.log("Server is Running");
+})
